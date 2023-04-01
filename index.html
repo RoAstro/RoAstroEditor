@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
    
- 
+    <script src=
+    "https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+        </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,11 +87,11 @@
     <label>Unghi: </label><input type="number"  id="alfa" style="width: 30px; height:10px;"><label >°</label>
     <label>Culoare fundal:</label><input type="color"  id="divcul" value="#FFFFFF">
     <input type="submit" value="Seteaza"  onclick="fmc()"><br><br>
-    <label>Adauga imagini:</label>
-    <br>
-    <input type="file" name="" id="imginp" accept="image/*" >
-    <br>
-<center> <input type="submit" value="Adauga element imagine" onclick="addimg()"></center>
+
+   
+<center>     <label>Adauga URL imagine:</label>
+    <br> <input type="url" id="url" >
+    <br><input type="submit" value="Adauga element imagine" onclick="addimg()"></center>
 <br>
    <label>W:</label><input id="w" type="number" style="height: 10px;width: 50px;">
    <label>H:</label><input id="h" type="number" style="height: 10px;width: 50px;">
@@ -99,7 +101,7 @@
   
     <center>
         <br>
-       <input type="submit" value="Seteaza" onclick="newimg()"><br><p>Pentru a va bucura de functia IMAGINI, salvati pagina offline.</p>
+       <input type="submit" value="Seteaza" onclick="newimg()">
 <br>
         <h2>&copy; Simion Tudor</h2>
     </center>
@@ -140,10 +142,10 @@ function showCoords(event) {
 }
 
 
-
 function addimg(){
-    img=document.getElementById("imginp").files[0].name;
-    document.getElementById("img").src=img;
+    var img= document.getElementById("url").value;
+ 
+   document.getElementById("img").src= img ;
 }
 function fimpact(){document.getElementById(l).style.fontFamily = "Impact,Charcoal,sans-serif"}
 function fcoun(){document.getElementById(l).style.fontFamily = " 'Courier New', monospace"}
