@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <script src=
+    "https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+        </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoAstroEditor</title>
+    <style>
+        .arr{
+            height: 200px;
+            width: 100%;
+        }
+        .controls{
+            height: 600px;
+            width: 30%;
+            position: fixed;
+            right: 0;
+            border: 5px outset rgb(78, 78, 78);
+            background-color: lightblue;
+        }
+        .workspace{
+            border: 5px outset rgb(0, 0, 0);
+            height: 600px;
+            width: 70%;
+            position: fixed;
+            left:0;
+        }
+        
+    </style>
+</head>
+<body>
+   <div id="wrk" onclick="showCoords(event)" class="workspace">
+<p id="p1" style="position: absolute;"></p>
+<p id="p2" style="position: absolute;"></p>
+<p id="p3" style="position: absolute;"></p>
+<p id="p4" style="position: absolute;"></p>
+<p id="p5" style="position: absolute;"></p>
+<p id="p6" style="position: absolute;"></p>
+<p id="p7" style="position: absolute;"></p>
+<p id="p8" style="position: absolute;"></p>
+<p id="p9" style="position: absolute;"></p>
+<p id="p10" style="position: absolute;"></p>
+<p id="p11" style="position: absolute;"></p>
+<p id="p12" style="position: absolute;"></p>
+<p id="p13" style="position: absolute;"></p>
+<p id="p14" style="position: absolute;"></p>
+<p id="p15" style="position: absolute;"></p>
+<p id="p16" style="position: absolute;"></p>
+<p id="p17" style="position: absolute;"></p>
+<p id="p18" style="position: absolute;"></p>
+<p id="p19" style="position: absolute;"></p>
+<p id="p20" style="position: absolute;"></p>
+<img  id="img" style="position: relative;">
+   </div>
+   <div class="controls">
+    <center>
+        <H1>RoAstroEditor</H1>
+        
+        <input type="text" id="inputext" >
+        <input type="submit" value="Adauga element text nou" onclick="itxt()">
+    </center>
+  
+  
+
+
+<div class="font">
+
+    <p>Setari:</p>
+    <input type="button" value="Reset" onclick= "fres()">
+    <input type="button" value="Impact" onclick= "fimpact()">
+    <input type="button" value="CourierNew" onclick= "fcoun()">
+    <input type="button" value="Cursiv" onclick= "fbsmt()">
+    <input type="button" value="Italic" onclick= "fita()">
+ 
+  
+    <label >Culoare text:</label><input type="color" name="" id="fcul">
+  <label >Marime:</label>  <input type="number"  id="fsize" style="height: 20px;width: 40px;">
+ 
+    
+    <label >X:</label><input type="number"  id="x" style="width: 40px;height:10px;">    
+    <label >Y:</label><input type="number"  id="y" style="width: 40px;height:10px;">  
+    <label>Strat:</label>    <input type="number" name="Strat" id="strat" style="height: 20px;width: 30px;">
+    <label>Unghi: </label><input type="number"  id="alfa" style="width: 30px; height:10px;"><label >°</label>
+    <label>Culoare fundal:</label><input type="color"  id="divcul" value="#FFFFFF">
+    <input type="submit" value="Seteaza"  onclick="fmc()"><br><br>
+    <label>Adauga imagini:</label>
+    <br>
+    <input type="file" name="" id="imginp" accept="image/*" >
+    <br>
+<center> <input type="submit" value="Adauga element imagine" onclick="addimg()"></center>
+<br>
+   <label>W:</label><input id="w" type="number" style="height: 10px;width: 50px;">
+   <label>H:</label><input id="h" type="number" style="height: 10px;width: 50px;">
+   <label >X:</label><input type="number"  id="ximg" style="width: 40px;height:10px;">    
+   <label >Y:</label><input type="number"  id="yimg" style="width: 40px;height:10px;">  
+   <label>Unghi: </label><input type="number"  id="beta" style="width: 30px; height:10px;"><label >°</label>
+  
+    <center>
+        <br>
+       <input type="submit" value="Seteaza" onclick="newimg()">
+<br>
+        <h2>&copy; Simion Tudor</h2>
+    </center>
+   </div>
+
+</div>
+   <script>
+p=0;
+
+function newimg(){
+    ix=0;
+    iy=0;
+    w=100;
+    h=100;
+    ix=document.getElementById("ximg").value;
+    iy=document.getElementById("yimg").value;
+  
+    document.getElementById("img").style.left = ix+"px";
+    document.getElementById("img").style.top = iy+"px";
+    w=document.getElementById("w").value;
+  h=document.getElementById("h").value;
+   document.getElementById("img").width =w;
+   document.getElementById("img").height =h ;
+    beta=document.getElementById("beta").value;
+    beta1="rotate("+beta+"deg)"
+    document.querySelector("img").style.transform = beta1;
+}
+
+function showCoords(event) {
+    l="p"+p;
+  let x = event.clientX;
+  let y = event.clientY;
+   document.getElementById(l).style.left = x+"px";
+    document.getElementById(l).style.top = y+"px";
+    document.getElementById("x").value=x;
+    document.getElementById("y").value=window.innerHeight-y;
+
+}
+
+
+
+function addimg(){
+    img=document.getElementById("imginp").files[0].name;
+    document.getElementById("img").src=img;
+}
+function fimpact(){document.getElementById(l).style.fontFamily = "Impact,Charcoal,sans-serif"}
+function fcoun(){document.getElementById(l).style.fontFamily = " 'Courier New', monospace"}
+function fbsmt(){document.getElementById(l).style.fontFamily = " 'Brush Script MT', cursive"}
+function fita(){document.getElementById(l).style.fontStyle = "Italic"}
+function fres(){document.getElementById(l).style.fontStyle = ""; document.getElementById("p"+p).style.fontFamily = ""}
+function fmc(){
+    l="p"+document.getElementById("strat").value;
+    document.getElementById(l).style.color = document.getElementById("fcul").value;
+    document.getElementById(l).style.fontSize = document.getElementById("fsize").value*10+"px";
+
+    document.getElementById(l).style.left = document.getElementById("x").value+"px";
+    document.getElementById(l).style.bottom = document.getElementById("y").value+"px";
+    alfa=document.getElementById("alfa").value;
+    alfa1="rotate("+alfa+"deg)"
+    document.getElementById(l).style.transform = alfa1;
+    document.getElementById("wrk").style.backgroundColor=document.getElementById("divcul").value
+}
+
+   function itxt(){
+    p++;
+    l="p"+p;
+    document.getElementById("strat").value=p;
+    document.getElementById("fsize").value=3;
+    text = document.getElementById("inputext").value;
+document.getElementById("inputext").value="";
+document.getElementById(l).innerHTML=text;
+text="";
+
+    }
+
+   </script> 
+</body>
+</html>
